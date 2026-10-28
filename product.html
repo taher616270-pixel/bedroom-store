@@ -1,25 +1,24 @@
-<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>تفاصيل المنتج - أبو محمد اليافعي</title><script src="https://cdn.tailwindcss.com"></script><link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@700;800&display=swap" rel="stylesheet"><style>*{font-family:Tajawal}</style></head>
+<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>تفاصيل - أبو محمد اليافعي</title><script src="https://cdn.tailwindcss.com"></script><link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@700;800&display=swap" rel="stylesheet"><style>*{font-family:Tajawal}</style></head>
 <body class="bg-white">
-<header class="flex justify-between p-4 border-b sticky top-0 bg-white z-10"><a href="index.html">← رجوع</a><a href="cart.html" class="font-bold">السلة 🛒 <span id="cartCount">0</span></a></header>
+<header class="flex justify-between p-4 border-b sticky top-0 bg-white"><a href="index.html">← رجوع</a><a href="cart.html">السلة 🛒 <span id="cartCount">0</span></a></header>
 <div id="product" class="p-4 pb-20"></div>
 <script>
 const products=JSON.parse(localStorage.getItem('baytonia_products')||'[]');
 const id=+new URLSearchParams(location.search).get('id');
 const p=products.find(x=>x.id===id)||products[0];
-if(!p){document.getElementById('product').innerHTML='المنتج غير موجود';}
-else{
+function getWA(){return localStorage.getItem('wa_number')||'966500000000';}
 document.getElementById('product').innerHTML=`
-<img src="${p.img}" class="w-full rounded-xl aspect-[4/3] object-cover">
-<div class="flex gap-2 mt-3"><span class="bg-black text-white text-[10px] px-2 py-1 rounded">${p.badgeLeft}</span><span class="bg-[#C8A97E] text-white text-[10px] px-2 py-1 rounded">${p.badgeRight}</span><span class="bg-[#F9F6F1] text-[10px] px-2 py-1 rounded">★ ${p.rating||'5.0'}</span></div>
+<img src="${p.img}" class="w-full rounded-xl">
+<div class="flex gap-2 mt-3"><span class="bg-black text-white text-[10px] px-2 py-1 rounded">${p.badgeLeft}</span><span class="bg-[#C8A97E] text-white text-[10px] px-2 py-1 rounded">${p.badgeRight}</span></div>
 <h1 class="font-black text-[18px] mt-3">${p.name}</h1>
-<div class="flex gap-2 items-baseline mt-2"><b class="text-[24px]">${p.price.toLocaleString()} ر.س</b><span class="line-through text-gray-400 text-sm">${p.oldPrice.toLocaleString()} ر.س</span><span class="bg-red-600 text-white text-[10px] px-2 py-1 rounded">${p.badgeRight}</span></div>
-<div class="bg-[#F9F6F1] p-3 rounded-xl mt-4 text-[12px] leading-6">✔ خشب تايلندي درجة أولى<br>✔ يتضمن سرير + 2 كومدينة + دولاب + تسريحة<br>✔ ضمان 5 سنوات<br>✔ توصيل مجاني داخل الدمام<br>✔ تقسيط Tabby و Tamara</div>
-<div class="flex gap-3 mt-6"><div class="flex border rounded-full items-center"><button onclick="if(qty>1){qty--;qtyEl.innerText=qty}" class="w-11 h-11">-</button><span id="qtyEl" class="w-8 text-center font-bold">1</span><button onclick="qty++;qtyEl.innerText=qty" class="w-11 h-11">+</button></div><button onclick="addToCart()" class="flex-1 bg-black text-white rounded-full h-12 font-bold">أضف للسلة - ${p.price} ر.س</button></div>
-<div class="mt-4 grid grid-cols-2 gap-2 text-[11px]"><div class="bg-[#F9F6F1] p-3 rounded-xl text-center">🚚 توصيل سريع<br>خلال 3 أيام</div><div class="bg-[#F9F6F1] p-3 rounded-xl text-center">💳 تقسيط<br>Tabby / Tamara</div></div>
+<div class="flex gap-2 items-baseline mt-2"><b class="text-[24px]">${p.price.toLocaleString()} ر.س</b><span class="line-through text-gray-400">${p.oldPrice.toLocaleString()}</span></div>
+<div class="bg-[#F9F6F1] p-3 rounded-xl mt-4 text-[12px] leading-7">✔ خشب تايلندي<br>✔ ضمان 5 سنوات<br>✔ توصيل مجاني الدمام</div>
+<div class="flex gap-3 mt-6"><div class="flex border rounded-full items-center"><button onclick="if(qty>1){qty--;qtyEl.innerText=qty}" class="w-11 h-11">-</button><span id="qtyEl" class="w-8 text-center font-bold">1</span><button onclick="qty++;qtyEl.innerText=qty" class="w-11 h-11">+</button></div><button onclick="addToCart()" class="flex-1 bg-black text-white rounded-full h-12 font-bold">أضف للسلة</button></div>
+<button onclick="buyNow()" class="w-full mt-3 bg-[#C8A97E] text-white h-12 rounded-full font-bold">شراء مباشر واتساب</button>
 `;
-}
 let qty=1; const qtyEl=document.getElementById('qtyEl');
 let cart=JSON.parse(localStorage.getItem('cart')||'[]');
 document.getElementById('cartCount').innerText=cart.reduce((a,b)=>a+b.qty,0);
 function addToCart(){let c=JSON.parse(localStorage.getItem('cart')||'[]');let ex=c.find(x=>x.id===p.id);if(ex)ex.qty+=qty;else c.push({...p,qty});localStorage.setItem('cart',JSON.stringify(c));location.href='cart.html'}
+function buyNow(){const wa=getWA();const msg=`مرحبا أبو محمد اليافعي أريد ${p.name} × ${qty} بسعر ${p.price}`;window.open(`https://wa.me/${wa}?text=${encodeURIComponent(msg)}`,'_blank')}
 </script></body></html>
