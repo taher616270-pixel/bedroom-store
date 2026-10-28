@@ -2,79 +2,74 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>لوحة التحكم - Baytonia</title>
+<title>أبو محمد اليافعي - غرف نوم</title>
 <script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@500;700;800&display=swap" rel="stylesheet">
-<style>*{font-family:'Tajawal'}</style>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>*{font-family:'Tajawal'}.scroll-hide::-webkit-scrollbar{display:none}.scroll-hide{scrollbar-width:none}</style>
 </head>
-<body class="bg-[#F9F6F1] p-3">
-<div id="loginBox" class="max-w-sm mx-auto mt-20 bg-white p-6 rounded-2xl border">
-<h2 class="font-black text-center text-xl">لوحة تحكم المتجر 🔐</h2>
-<p class="text-[12px] text-center text-gray-500 mt-1">تحكم بالصور والأسعار والشارات</p>
-<input id="pass" type="password" placeholder="كلمة السر: admin123" class="w-full mt-4 h-12 border rounded-full px-4 outline-none">
-<button onclick="login()" class="w-full mt-3 bg-black text-white h-12 rounded-full font-bold">دخول</button>
-</div>
+<body class="bg-[#F9F6F1] text-[#1a1a1a]">
 
-<div id="panel" class="hidden max-w-6xl mx-auto">
-<div class="bg-white p-4 rounded-xl border flex justify-between items-center"><b>إدارة متجر Baytonia 🛏️</b><a href="../" class="text-[#C8A97E] text-sm font-bold">عرض المتجر →</a></div>
+<header class="bg-white sticky top-0 z-50 border-b border-[#EDE8E0]">
+  <div class="flex items-center justify-between px-4 h-[56px]">
+    <div class="flex items-center gap-3">
+      <button class="w-8 h-8 flex flex-col gap-[4px] justify-center"><span class="h-[2px] bg-black w-5"></span><span class="h-[2px] bg-black w-5"></span><span class="h-[2px] bg-black w-3"></span></button>
+      <span id="siteName" class="text-[17px] font-[800]">أبو محمد اليافعي</span>
+    </div>
+    <div class="flex items-center gap-3">
+      <div class="relative"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg><span id="cartCount" class="absolute -top-1 -right-1 bg-[#C8A97E] text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center">0</span></div>
+    </div>
+  </div>
+  <div class="px-4 pb-3"><div class="relative"><input id="search" placeholder="ابحث" class="w-full bg-[#F9F6F1] border border-[#EDE8E0] rounded-full h-[44px] pr-4 pl-10 text-[14px] outline-none focus:border-[#C8A97E]"></div></div>
+  <div class="flex gap-6 px-4 pb-3 overflow-x-auto scroll-hide text-[13px] font-[500] border-b border-[#F0EBE3]"><span class="whitespace-nowrap border-b-2 border-black pb-2 font-[700]">الكل</span><span class="whitespace-nowrap text-[#8a8a8a]">جديد</span><span class="whitespace-nowrap text-[#8a8a8a]">أطقم غرف</span><span class="whitespace-nowrap text-[#8a8a8a]">أثاث</span></div>
+</header>
 
-<div class="grid md:grid-cols-3 gap-4 mt-4">
-<div class="bg-white p-4 rounded-xl border h-fit">
-<h3 class="font-bold mb-3">➕ إضافة منتج جديد</h3>
+<div class="px-4 py-3 text-[12px] text-[#8a8a8a]">تشكيلة واسعة من غرف النوم الفاخرة</div>
 
-<label class="text-[11px] font-bold">اسم المنتج (يظهر تحت الصورة)</label>
-<input id="name" placeholder="مثلا: سرير فلان 180x200" class="w-full h-10 border rounded-full px-3 mb-2 text-sm mt-1">
+<div id="products" class="grid grid-cols-2 gap-[1px] bg-[#EDE8E0] border-y border-[#EDE8E0]"></div>
 
-<label class="text-[11px] font-bold">رابط الصورة</label>
-<input id="img" placeholder="https://images.unsplash.com/..." class="w-full h-10 border rounded-full px-3 mb-2 text-sm mt-1">
+<footer class="bg-[#1a1a1a] text-[#a8a8a8]">
+  <div class="p-6 text-center">
+    <div class="bg-[#2a2a2a] rounded-[12px] p-4 mb-6">
+      <p class="text-white text-[14px] font-[700]">تحتاج مساعدة؟ فريقنا في الخدمة</p>
+      <button onclick="window.open('https://wa.me/966500000000','_blank')" class="mt-3 bg-[#C8A97E] text-white w-full h-10 rounded-[8px] text-[13px] font-bold">ابدأ المحادثة</button>
+    </div>
+    <div id="footerContent" class="text-[12px] leading-7 whitespace-pre-line">
+      أبو محمد اليافعي - الدمام
+      للتواصل واتساب فقط
+    </div>
+    <p class="text-[10px] mt-4 text-[#666]">الدفع: Mada - Visa - Tabby - Tamara</p>
+  </div>
+</footer>
 
-<div class="grid grid-cols-2 gap-2">
-<div><label class="text-[11px] font-bold">السعر الحالي</label><input id="price" type="number" placeholder="2699" class="w-full h-10 border rounded-full px-3 text-sm mt-1"></div>
-<div><label class="text-[11px] font-bold">السعر القديم</label><input id="oldPrice" type="number" placeholder="4299" class="w-full h-10 border rounded-full px-3 text-sm mt-1"></div>
-</div>
-
-<label class="text-[11px] font-bold mt-2 block">الشارة اليسار (Premium / توصيل سريع / أي اسم)</label>
-<input id="badgeLeft" value="Premium" placeholder="اكتب أي شي: Premium, توصيل سريع, الأكثر مبيعا" class="w-full h-10 border rounded-full px-3 text-sm mt-1 bg-black text-white">
-
-<label class="text-[11px] font-bold mt-2 block">الشارة اليمين (الخصم / جديد)</label>
-<input id="badgeRight" value="-40%" placeholder="اكتب: -40% أو جديد أو حصري" class="w-full h-10 border rounded-full px-3 text-sm mt-1 bg-[#C8A97E] text-white">
-
-<label class="text-[11px] font-bold mt-2 block">التقييم</label>
-<input id="rating" value="5.0" class="w-full h-10 border rounded-full px-3 text-sm mt-1">
-
-<button onclick="add()" class="w-full mt-4 bg-[#C8A97E] text-white h-12 rounded-full font-bold text-[15px]">إضافة المنتج ✅</button>
-<p class="text-[10px] text-gray-400 text-center mt-2">المنتج يظهر فورا في الصفحة الرئيسية</p>
-</div>
-
-<div class="md:col-span-2 bg-white p-4 rounded-xl border">
-<h3 class="font-bold flex justify-between">المنتجات الحالية <span id="count" class="bg-[#F9F6F1] px-3 py-1 rounded-full text-[12px]">0</span></h3>
-<div id="list" class="grid grid-cols-2 gap-[1px] bg-[#EDE8E0] mt-3 border border-[#EDE8E0] rounded-xl overflow-hidden"></div>
-</div>
-</div>
-</div>
+<nav class="fixed bottom-0 left-0 right-0 bg-white border-t border-[#EDE8E0] h-[64px] flex justify-around items-center z-40 text-[10px]"><div class="text-center font-bold">الرئيسية</div><div class="text-center text-[#8a8a8a]">المفضلة</div><div class="text-center text-[#8a8a8a]">السلة</div><div class="text-center text-[#8a8a8a]">حسابي</div></nav>
+<div class="h-[64px]"></div>
 
 <script>
-let products=JSON.parse(localStorage.getItem('baytonia_products')||'null')||[];
-function login(){if(document.getElementById('pass').value==='admin123'||document.getElementById('pass').value==='123'){localStorage.setItem('bay_admin','ok');show()}else alert('كلمة السر: admin123')}
-function show(){document.getElementById('loginBox').classList.add('hidden');document.getElementById('panel').classList.remove('hidden');render()}
-if(localStorage.getItem('bay_admin')) show();
+const defaultProducts=[
+{id:1,name:"سرير فلان مع مرآة 180x200",price:2699,oldPrice:4299,img:"https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=600",badgeLeft:"Premium",badgeRight:"-37%",rating:"5.0"},
+{id:2,name:"طقم غرفة نوم نوفا 6 قطع",price:3799,oldPrice:5890,img:"https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=600",badgeLeft:"توصيل سريع",badgeRight:"-35%",rating:"4.9"}
+];
+let products=JSON.parse(localStorage.getItem('baytonia_products')||'null')||defaultProducts;
 function render(){
- document.getElementById('count').innerText=products.length;
- document.getElementById('list').innerHTML=products.map(p=>`
- <div class="bg-white p-2 pb-3 relative">
-  <div class="relative"><img src="${p.img}" class="w-full aspect-[4/3] object-cover rounded-lg"><span class="absolute top-2 left-2 bg-black text-white text-[9px] px-2 py-1 rounded">${p.badgeLeft}</span><span class="absolute top-2 right-2 bg-[#C8A97E] text-white text-[9px] px-2 py-1 rounded">${p.badgeRight}</span></div>
-  <p class="text-[11px] mt-2 h-[28px] overflow-hidden">${p.name}</p><b class="text-[12px]">${p.price} ر.س</b>
-  <button onclick="del(${p.id})" class="absolute top-1 right-1 bg-red-500 text-white w-6 h-6 rounded-full">×</button>
+ let siteNameStore=localStorage.getItem('site_name')||'أبو محمد اليافعي';
+ document.getElementById('siteName').innerText=siteNameStore;
+ document.title=siteNameStore+' - غرف نوم';
+ let footerStore=localStorage.getItem('footer_text');
+ if(footerStore) document.getElementById('footerContent').innerText=footerStore;
+ document.getElementById('products').innerHTML=products.map(p=>`
+ <div class="bg-white p-2 pb-3">
+  <div class="relative"><img src="${p.img}" class="w-full aspect-[4/3] object-cover rounded-[8px]">
+   <span class="absolute top-2 left-2 bg-[#1a1a1a] text-white text-[10px] px-2 py-1 rounded">${p.badgeLeft}</span>
+   <span class="absolute top-2 right-2 bg-[#C8A97E] text-white text-[10px] px-2 py-1 rounded">${p.badgeRight}</span>
+  </div>
+  <p class="text-[12px] mt-2 h-[32px] overflow-hidden">${p.name}</p>
+  <div class="text-[11px] text-[#C8A97E] mt-1">★ ${p.rating}</div>
+  <div class="flex gap-2 items-baseline mt-1"><b class="text-[14px]">${p.price.toLocaleString()} ر.س</b><span class="text-[11px] line-through text-[#999]">${p.oldPrice.toLocaleString()}</span></div>
+  <button onclick="window.open('https://wa.me/966500000000?text=${encodeURIComponent('أريد ')}${encodeURIComponent(p.name)}','_blank')" class="mt-2 w-full bg-white border border-black rounded-full h-[36px] text-[12px] font-[700]">أضف للسلة</button>
  </div>`).join('');
- localStorage.setItem('baytonia_products',JSON.stringify(products));
+ document.getElementById('cartCount').innerText=products.length;
 }
-function add(){
- const p={id:Date.now(),name:document.getElementById('name').value,img:document.getElementById('img').value||'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=600',price:+document.getElementById('price').value||0,oldPrice:+document.getElementById('oldPrice').value||0,badgeLeft:document.getElementById('badgeLeft').value||'Premium',badgeRight:document.getElementById('badgeRight').value||'-40%',rating:document.getElementById('rating').value||'5.0'};
- if(!p.name||!p.price) return alert('اكتب الاسم والسعر على الأقل');
- products.unshift(p);render();
- document.getElementById('name').value='';document.getElementById('img').value='';document.getElementById('price').value='';document.getElementById('oldPrice').value='';
-}
-function del(id){products=products.filter(x=>x.id!==id);render()}
+render();
 </script>
 </body>
 </html>
