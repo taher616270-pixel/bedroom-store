@@ -1,24 +1,20 @@
 <!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>السلة - أبو محمد اليافعي</title><script src="https://cdn.tailwindcss.com"></script><link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@700;800&display=swap" rel="stylesheet"><style>*{font-family:Tajawal}</style></head>
 <body class="bg-[#F9F6F1] min-h-screen">
-<header class="bg-white p-4 border-b flex justify-between sticky top-0"><a href="index.html">← متابعة التسوق</a><b>سلة المشتريات</b></header>
+<header class="bg-white p-4 border-b flex justify-between sticky top-0"><a href="index.html">← متابعة التسوق</a><b>السلة</b></header>
 <div id="cartList" class="p-4 space-y-3"></div>
 <div id="summary" class="bg-white m-4 p-4 rounded-xl border"></div>
 <script>
 let cart=JSON.parse(localStorage.getItem('cart')||'[]');
+function getWA(){return localStorage.getItem('wa_number')||'966500000000';}
 function render(){
- if(cart.length===0){document.getElementById('cartList').innerHTML='<div class="bg-white p-10 rounded-xl text-center">السلة فاضية 😔<br><a href=index.html class="text-[#C8A97E] underline">تسوق الآن</a></div>';document.getElementById('summary').innerHTML='';return}
- document.getElementById('cartList').innerHTML=cart.map((p,i)=>`
- <div class="bg-white p-3 rounded-xl flex gap-3 border">
- <img src="${p.img}" class="w-20 h-20 rounded-lg object-cover">
- <div class="flex-1"><p class="text-[13px] font-bold">${p.name}</p><p class="text-[11px] text-gray-500">${p.badgeLeft} | ${p.badgeRight}</p><div class="flex justify-between items-center mt-2"><b>${(p.price*p.qty).toLocaleString()} ر.س</b><div class="flex items-center gap-2 border rounded-full px-2"><button onclick="changeQty(${i},-1)" class="w-7 h-7">-</button><span class="text-sm">${p.qty}</span><button onclick="changeQty(${i},1)" class="w-7 h-7">+</button></div></div></div>
- <button onclick="removeItem(${i})" class="text-red-500 w-6 h-6">×</button>
- </div>`).join('');
+ if(cart.length===0){cartList.innerHTML='<div class="bg-white p-10 rounded-xl text-center">السلة فاضية<br><a href=index.html class="text-[#C8A97E] underline">تسوق الآن</a></div>';summary.innerHTML='';return}
+ cartList.innerHTML=cart.map((p,i)=>`<div class="bg-white p-3 rounded-xl flex gap-3 border"><img src="${p.img}" class="w-20 h-20 rounded-lg object-cover"><div class="flex-1"><p class="text-[13px] font-bold">${p.name}</p><div class="flex justify-between items-center mt-2"><b>${(p.price*p.qty).toLocaleString()} ر.س</b><div class="flex items-center gap-2 border rounded-full px-2"><button onclick="changeQty(${i},-1)" class="w-7 h-7">-</button><span>${p.qty}</span><button onclick="changeQty(${i},1)" class="w-7 h-7">+</button></div></div></div><button onclick="removeItem(${i})" class="text-red-500">×</button></div>`).join('');
  const total=cart.reduce((a,b)=>a+b.price*b.qty,0);
- document.getElementById('summary').innerHTML=`<div class="flex justify-between text-sm"><span>المجموع الفرعي</span><b>${total.toLocaleString()} ر.س</b></div><div class="flex justify-between text-sm mt-2"><span>التوصيل</span><span class="text-green-600 font-bold">مجاني</span></div><hr class="my-3"><div class="flex justify-between font-black text-[18px]"><span>الإجمالي</span><span>${total.toLocaleString()} ر.س</span></div><div class="bg-[#F9F6F1] p-2 rounded text-[11px] mt-3 text-center">💳 تقسيط Tabby و Tamara متاح</div><button onclick="checkout()" class="w-full mt-4 bg-black text-white h-12 rounded-full font-bold">إتمام الطلب عبر واتساب ✅</button><button onclick="clearCart()" class="w-full mt-2 border rounded-full h-10 text-sm">إفراغ السلة</button>`;
+ summary.innerHTML=`<div class="flex justify-between text-sm"><span>المجموع</span><b>${total.toLocaleString()} ر.س</b></div><div class="flex justify-between text-sm mt-2"><span>التوصيل</span><span class="text-green-600">مجاني</span></div><hr class="my-3"><div class="flex justify-between font-black text-[18px]"><span>الإجمالي</span><span>${total.toLocaleString()} ر.س</span></div><button onclick="checkout()" class="w-full mt-4 bg-black text-white h-12 rounded-full font-bold">إتمام الطلب واتساب ✅</button><button onclick="clearCart()" class="w-full mt-2 border rounded-full h-10 text-sm">إفراغ السلة</button><p class="text-[11px] text-center mt-3 text-gray-500">سيتم تحويلك لواتساب: ${getWA()}</p>`;
 }
 function changeQty(i,d){cart[i].qty+=d;if(cart[i].qty<=0)cart.splice(i,1);localStorage.setItem('cart',JSON.stringify(cart));render()}
 function removeItem(i){cart.splice(i,1);localStorage.setItem('cart',JSON.stringify(cart));render()}
 function clearCart(){cart=[];localStorage.setItem('cart','[]');render()}
-function checkout(){const total=cart.reduce((a,b)=>a+b.price*b.qty,0);let msg=`مرحبا أبو محمد اليافعي 👋%0Aأريد طلب:%0A`;cart.forEach(p=>{msg+=`- ${p.name} × ${p.qty} = ${p.price*p.qty} ر.س%0A`});msg+=`%0Aالإجمالي: ${total} ر.س%0Aالاسم:%0Aالعنوان:%0Aالجوال:`;window.open(`https://wa.me/966500000000?text=${msg}`,'_blank')}
+function checkout(){const total=cart.reduce((a,b)=>a+b.price*b.qty,0);let msg=`مرحبا أبو محمد اليافعي 👋%0Aأريد طلب:%0A`;cart.forEach(p=>{msg+=`- ${p.name} × ${p.qty} = ${p.price*p.qty} ر.س%0A`});msg+=`%0Aالإجمالي: ${total} ر.س%0Aالاسم:%0Aالعنوان:%0Aالجوال:`;const wa=getWA();window.open(`https://wa.me/${wa}?text=${msg}`,'_blank')}
 render();
 </script></body></html>
