@@ -1,38 +1,15 @@
-<!doctype html>
-<html lang="ar" dir="rtl">
-<head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>لوحة تحكم - أبو محمد اليافعي</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@500;700;800&display=swap" rel="stylesheet">
-<style>*{font-family:'Tajawal'}</style>
-</head>
+<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>لوحة تحكم - أبو محمد اليافعي</title><script src="https://cdn.tailwindcss.com"></script><link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@700&display=swap" rel="stylesheet"><style>*{font-family:Tajawal}</style></head>
 <body class="bg-[#F9F6F1] p-3">
-<div id="loginBox" class="max-w-sm mx-auto mt-16 bg-white p-6 rounded-2xl border">
-<h2 class="font-black text-center">لوحة تحكم أبو محمد اليافعي 🔐</h2>
-<input id="pass" type="password" placeholder="admin123" class="w-full mt-4 h-12 border rounded-full px-4"><button onclick="login()" class="w-full mt-3 bg-black text-white h-12 rounded-full font-bold">دخول</button>
-</div>
-
-<div id="panel" class="hidden max-w-6xl mx-auto">
-<div class="bg-white p-4 rounded-xl border flex justify-between"><b>الإدارة</b><a href="../" class="text-[#C8A97E] text-sm">عرض المتجر →</a></div>
-
+<div id="loginBox" class="max-w-sm mx-auto mt-16 bg-white p-6 rounded-2xl border text-center"><h2 class="font-black">لوحة تحكم أبو محمد اليافعي</h2><input id="pass" type="password" placeholder="admin123" class="w-full mt-4 h-12 border rounded-full px-4 text-center"><button onclick="login()" class="w-full mt-3 bg-black text-white h-12 rounded-full font-bold">دخول</button></div>
+<div id="panel" class="hidden max-w-6xl mx-auto"><div class="bg-white p-4 rounded-xl border flex justify-between"><b>الإدارة</b><a href="../" class="text-[#C8A97E] text-sm">عرض المتجر →</a></div>
 <div class="grid md:grid-cols-3 gap-4 mt-4">
-
 <div class="bg-white p-4 rounded-xl border h-fit">
-<h3 class="font-bold mb-3 bg-[#FFF7ED] p-2 rounded">⚙️ إعدادات المتجر</h3>
-<label class="text-[11px] font-bold">اسم المتجر فوق</label>
-<input id="siteNameInput" placeholder="أبو محمد اليافعي" class="w-full h-10 border rounded-full px-3 mb-2 text-sm mt-1">
-<label class="text-[11px] font-bold">نص الفوتر تحت (احذف السجل واكتب اللي تبيه)</label>
-<textarea id="footerInput" rows="4" placeholder="مثال: 
-أبو محمد اليافعي - الدمام
-واتساب: 05xxxxxxxx
-انستقرام: @...
-توصيل لجميع مدن المملكة" class="w-full border rounded-xl p-3 text-sm mt-1"></textarea>
-<button onclick="saveSettings()" class="w-full mt-3 bg-black text-white h-11 rounded-full font-bold">حفظ الإعدادات 💾</button>
-
+<h3 class="font-bold mb-2 bg-[#FFF7ED] p-2 rounded">⚙️ إعدادات المتجر</h3>
+<label class="text-[11px] font-bold">اسم المتجر</label><input id="siteNameInput" class="w-full h-10 border rounded-full px-3 text-sm mb-2">
+<label class="text-[11px] font-bold">نص الفوتر (بدل السجل)</label><textarea id="footerInput" rows="4" class="w-full border rounded-xl p-3 text-sm"></textarea>
+<button onclick="saveSettings()" class="w-full mt-3 bg-black text-white h-11 rounded-full font-bold">حفظ الإعدادات</button>
 <hr class="my-4">
-
-<h3 class="font-bold mb-3">➕ إضافة منتج</h3>
+<h3 class="font-bold mb-2">➕ إضافة منتج</h3>
 <input id="name" placeholder="اسم المنتج" class="w-full h-10 border rounded-full px-3 mb-2 text-sm">
 <input id="img" placeholder="رابط الصورة" class="w-full h-10 border rounded-full px-3 mb-2 text-sm">
 <div class="grid grid-cols-2 gap-2"><input id="price" type="number" placeholder="السعر" class="h-10 border rounded-full px-3 text-sm"><input id="oldPrice" type="number" placeholder="السعر القديم" class="h-10 border rounded-full px-3 text-sm"></div>
@@ -40,21 +17,15 @@
 <input id="rating" value="5.0" class="w-full h-10 border rounded-full px-3 mt-2 text-sm">
 <button onclick="add()" class="w-full mt-3 bg-[#C8A97E] text-white h-11 rounded-full font-bold">إضافة المنتج</button>
 </div>
-
 <div class="md:col-span-2 bg-white p-4 rounded-xl border"><h3 class="font-bold">المنتجات <span id="count">0</span></h3><div id="list" class="grid grid-cols-2 gap-[1px] bg-[#EDE8E0] mt-3 border rounded-xl overflow-hidden"></div></div>
-
-</div>
-</div>
-
+</div></div>
 <script>
 let products=JSON.parse(localStorage.getItem('baytonia_products')||'null')||[];
 function login(){if(pass.value==='admin123'||pass.value==='123'){localStorage.setItem('bay_admin','ok');show()}else alert('admin123')}
 function show(){loginBox.classList.add('hidden');panel.classList.remove('hidden');siteNameInput.value=localStorage.getItem('site_name')||'أبو محمد اليافعي';footerInput.value=localStorage.getItem('footer_text')||'';render()}
 if(localStorage.getItem('bay_admin')) show();
-function saveSettings(){localStorage.setItem('site_name',siteNameInput.value);localStorage.setItem('footer_text',footerInput.value);alert('تم حفظ الإعدادات ✅ - ادخل المتجر وشوف الاسم والفوتر تغير');}
-function render(){count.innerText=products.length;list.innerHTML=products.map(p=>`<div class="bg-white p-2 relative"><div class="relative"><img src="${p.img}" class="w-full aspect-[4/3] rounded-lg"><span class="absolute top-2 left-2 bg-black text-white text-[9px] px-2 py-1 rounded">${p.badgeLeft}</span><span class="absolute top-2 right-2 bg-[#C8A97E] text-white text-[9px] px-2 py-1 rounded">${p.badgeRight}</span></div><p class="text-[11px] mt-2">${p.name}</p><b class="text-[12px]">${p.price} ر.س</b><button onclick="del(${p.id})" class="absolute top-1 right-1 bg-red-500 text-white w-6 h-6 rounded-full">×</button></div>`).join('');localStorage.setItem('baytonia_products',JSON.stringify(products));}
-function add(){const p={id:Date.now(),name:name.value,img:img.value||'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=600',price:+price.value||0,oldPrice:+oldPrice.value||0,badgeLeft:badgeLeft.value,badgeRight:badgeRight.value,rating:rating.value||'5.0'};if(!p.name||!p.price) return alert('الاسم والسعر');products.unshift(p);render();name.value=img.value=price.value=oldPrice.value='';}
-function del(id){products=products.filter(x=>x.id!==id);render();}
-</script>
-</body>
-</html>
+function saveSettings(){localStorage.setItem('site_name',siteNameInput.value);localStorage.setItem('footer_text',footerInput.value);alert('تم الحفظ ✅')}
+function render(){count.innerText=products.length;list.innerHTML=products.map(p=>`<div class="bg-white p-2 relative"><img src="${p.img}" class="w-full aspect-[4/3] rounded-lg"><p class="text-[11px] mt-2">${p.name}</p><b class="text-[12px]">${p.price} ر.س</b><button onclick="del(${p.id})" class="absolute top-1 right-1 bg-red-500 text-white w-6 h-6 rounded-full">×</button></div>`).join('');localStorage.setItem('baytonia_products',JSON.stringify(products));}
+function add(){const p={id:Date.now(),name:name.value,img:img.value||'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=600',price:+price.value||0,oldPrice:+oldPrice.value||0,badgeLeft:badgeLeft.value,badgeRight:badgeRight.value,rating:rating.value};if(!p.name||!p.price)return alert('الاسم والسعر');products.unshift(p);render();name.value=img.value=price.value=oldPrice.value='';}
+function del(id){products=products.filter(x=>x.id!==id);render()}
+</script></body></html>
