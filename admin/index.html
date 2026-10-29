@@ -1,4 +1,4 @@
-<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>لوحة تحكم</title><script src="https://cdn.tailwindcss.com"></script><link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@700&display=swap" rel="stylesheet"><style>*{font-family:Tajawal}</style></head>
+<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>لوحة التحكم</title><script src="https://cdn.tailwindcss.com"></script><link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@700&display=swap" rel="stylesheet"><style>*{font-family:Tajawal}</style></head>
 <body class="bg-[#F9F6F1] p-3">
 <div id="loginBox" class="max-w-sm mx-auto mt-16 bg-white p-6 rounded-2xl border text-center"><h2 class="font-black">أبو محمد اليافعي - لوحة التحكم</h2><input id="pass" type="password" placeholder="admin123" class="w-full mt-4 h-12 border rounded-full px-4 text-center"><button onclick="login()" class="w-full mt-3 bg-black text-white h-12 rounded-full font-bold">دخول</button></div>
 <div id="panel" class="hidden max-w-6xl mx-auto"><div class="bg-white p-4 rounded-xl border flex justify-between"><b>الإدارة</b><a href="../" class="text-[#C8A97E] text-sm">عرض المتجر →</a></div>
@@ -6,15 +6,16 @@
 <div class="bg-white p-4 rounded-xl border h-fit">
 <h3 class="font-bold mb-2 bg-[#FFF7ED] p-2 rounded">⚙️ إعدادات المتجر</h3>
 <label class="text-[11px] font-bold">اسم المتجر</label><input id="siteNameInput" class="w-full h-10 border rounded-full px-3 text-sm mb-2">
-<label class="text-[11px] font-bold text-green-700">رقم الواتساب (9665xxxxxxxx)</label><input id="waInput" placeholder="966500000000" class="w-full h-10 border-2 border-green-500 rounded-full px-3 text-sm mb-2 font-bold">
+<label class="text-[11px] font-bold text-green-700">رقم الواتساب 9665xxxxxxxx</label><input id="waInput" class="w-full h-10 border-2 border-green-500 rounded-full px-3 text-sm mb-2 font-bold">
 <label class="text-[11px] font-bold">نص الفوتر</label><textarea id="footerInput" rows="3" class="w-full border rounded-xl p-3 text-sm"></textarea>
 <button onclick="saveSettings()" class="w-full mt-3 bg-black text-white h-11 rounded-full font-bold">حفظ الإعدادات 💾</button>
 <hr class="my-4">
-<h3 class="font-bold mb-2">➕ إضافة منتج</h3>
+<h3 class="font-bold mb-2">➕ إضافة منتج + اختيار قسمه</h3>
 <input id="name" placeholder="اسم المنتج" class="w-full h-10 border rounded-full px-3 mb-2 text-sm">
 <input id="img" placeholder="رابط الصورة" class="w-full h-10 border rounded-full px-3 mb-2 text-sm">
+<select id="catInput" class="w-full h-10 border rounded-full px-3 mb-2 text-sm"><option value="bedroom">غرف نوم</option><option value="sofa">كنب وكراسي</option><option value="dining">غرف طعام</option><option value="coffee">طاولات القهوة</option><option value="offers">عروض نهاية العام</option><option value="furniture">اثاث</option><option value="home">منتجات منزلية</option></select>
 <div class="grid grid-cols-2 gap-2"><input id="price" type="number" placeholder="السعر" class="h-10 border rounded-full px-3 text-sm"><input id="oldPrice" type="number" placeholder="السعر القديم" class="h-10 border rounded-full px-3 text-sm"></div>
-<div class="grid grid-cols-2 gap-2 mt-2"><input id="badgeLeft" value="Premium" class="h-10 border rounded-full px-3 text-sm bg-black text-white"><input id="badgeRight" value="-40%" class="h-10 border rounded-full px-3 text-sm bg-[#C8A97E] text-white"></div>
+<div class="grid grid-cols-2 gap-2 mt-2"><input id="badgeLeft" value="Premium" class="h-10 border rounded-full px-3 text-sm bg-black text-white"><input id="badgeRight" value="-37%" class="h-10 border rounded-full px-3 text-sm bg-[#C8A97E] text-white"></div>
 <button onclick="add()" class="w-full mt-3 bg-[#C8A97E] text-white h-11 rounded-full font-bold">إضافة المنتج</button>
 </div>
 <div class="md:col-span-2 bg-white p-4 rounded-xl border"><h3 class="font-bold">المنتجات <span id="count">0</span></h3><div id="list" class="grid grid-cols-2 gap-[1px] bg-[#EDE8E0] mt-3 border rounded-xl overflow-hidden"></div></div>
@@ -24,8 +25,8 @@ let products=JSON.parse(localStorage.getItem('baytonia_products')||'[]');
 function login(){if(pass.value==='admin123'||pass.value==='123'){localStorage.setItem('bay_admin','ok');show()}else alert('admin123')}
 function show(){loginBox.classList.add('hidden');panel.classList.remove('hidden');siteNameInput.value=localStorage.getItem('site_name')||'أبو محمد اليافعي';footerInput.value=localStorage.getItem('footer_text')||'أبو محمد اليافعي - الدمام';waInput.value=localStorage.getItem('wa_number')||'966500000000';render()}
 if(localStorage.getItem('bay_admin')) show();
-function saveSettings(){localStorage.setItem('site_name',siteNameInput.value);localStorage.setItem('footer_text',footerInput.value);localStorage.setItem('wa_number',waInput.value);alert('تم حفظ كل شي ✅\nالواتساب: '+waInput.value)}
-function render(){count.innerText=products.length;list.innerHTML=products.map(p=>`<div class="bg-white p-2 relative"><img src="${p.img}" class="w-full aspect-[4/3] rounded-lg"><p class="text-[11px] mt-2">${p.name}</p><b class="text-[12px]">${p.price} ر.س</b><button onclick="del(${p.id})" class="absolute top-1 right-1 bg-red-500 text-white w-6 h-6 rounded-full">×</button></div>`).join('');localStorage.setItem('baytonia_products',JSON.stringify(products));}
-function add(){const p={id:Date.now(),name:name.value,img:img.value||'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=600',price:+price.value||0,oldPrice:+oldPrice.value||0,badgeLeft:badgeLeft.value,badgeRight:badgeRight.value,rating:"5.0"};if(!p.name||!p.price)return alert('الاسم والسعر');products.unshift(p);render();name.value=img.value=price.value=oldPrice.value='';}
+function saveSettings(){localStorage.setItem('site_name',siteNameInput.value);localStorage.setItem('footer_text',footerInput.value);localStorage.setItem('wa_number',waInput.value);alert('تم حفظ ✅ رقم الواتساب: '+waInput.value)}
+function render(){count.innerText=products.length;list.innerHTML=products.map(p=>`<div class="bg-white p-2 relative"><img src="${p.img}" class="w-full aspect-[4/3] rounded-lg object-cover"><p class="text-[11px] mt-1">${p.cat||'bedroom'}</p><p class="text-[11px] font-bold">${p.name}</p><b class="text-[12px]">${p.price} ر.س</b><button onclick="del(${p.id})" class="absolute top-1 right-1 bg-red-500 text-white w-6 h-6 rounded-full">×</button></div>`).join('');localStorage.setItem('baytonia_products',JSON.stringify(products));}
+function add(){const p={id:Date.now(),name:name.value,img:img.value||'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=600',price:+price.value||0,oldPrice:+oldPrice.value||0,cat:catInput.value,badgeLeft:badgeLeft.value,badgeRight:badgeRight.value};if(!p.name||!p.price)return alert('الاسم والسعر');products.unshift(p);render();name.value=img.value=price.value=oldPrice.value='';}
 function del(id){products=products.filter(x=>x.id!==id);render()}
 </script></body></html>
