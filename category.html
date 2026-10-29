@@ -1,1 +1,26 @@
-
+<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>قسم</title><script src="https://cdn.tailwindcss.com"></script><link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@700;800&display=swap" rel="stylesheet"><style>*{font-family:Tajawal} #drawer{transform:translateX(100%);transition:.3s} #drawer.open{transform:translateX(0)} #overlay{display:none} #overlay.show{display:block}</style></head>
+<body class="bg-[#F9F6F1]">
+<div id="overlay" onclick="closeDrawer()" class="fixed inset-0 bg-black/50 z-[60]"></div>
+<div id="drawer" class="fixed top-0 right-0 w-[85%] max-w-[360px] h-full bg-white z-[70] overflow-y-auto"><div class="flex justify-between p-4 border-b sticky top-0 bg-white"><b>الأقسام</b><button onclick="closeDrawer()" class="w-8 h-8 border rounded-full">×</button></div><div class="text-[14px]"><a href="index.html" class="flex justify-between p-4 border-b"><span>الرئيسية</span><span>‹</span></a><a href="category.html?cat=bedroom" class="flex justify-between p-4 border-b font-bold"><span>غرف نوم</span><span>‹</span></a><a href="category.html?cat=sofa" class="flex justify-between p-4 border-b"><span>كنب وكراسي</span><span>‹</span></a><a href="category.html?cat=dining" class="flex justify-between p-4 border-b"><span>غرف طعام</span><span>‹</span></a><a href="category.html?cat=coffee" class="flex justify-between p-4 border-b"><span>طاولات القهوة والتلفزيون</span><span>‹</span></a><a href="category.html?cat=offers" class="flex justify-between p-4 border-b bg-[#A91D2A] text-white"><span>عروض نهاية العام 70%</span><span>‹</span></a></div></div>
+<header class="bg-white sticky top-0 z-50 border-b"><div class="flex justify-between items-center px-4 h-[56px]"><div class="flex items-center gap-3"><button onclick="openDrawer()" class="text-[26px]">☰</button><a href="index.html" id="siteName" class="font-black">أبو محمد اليافعي</a></div><a href="cart.html" class="relative">🛒<span id="cartCount" class="absolute -top-2 -right-2 bg-[#C8A97E] text-white text-[10px] w-5 h-5 rounded-full flex items-center justify-center">0</span></a></div></header>
+<div id="bannerCat" class="bg-[#A91D2A] text-white p-6 text-center"><h1 id="catTitle" class="text-[32px] font-black leading-8">عروض<br>نهاية العام<br>70%</h1></div>
+<div class="flex justify-between p-3 bg-white border-b text-[12px]"><span>تصفية</span><span id="count"></span><span>الموصى به ▼</span></div>
+<div id="products" class="grid grid-cols-2 gap-[1px] bg-[#EDE8E0]"></div>
+<script>
+let products=JSON.parse(localStorage.getItem('baytonia_products')||'[]');
+let cart=JSON.parse(localStorage.getItem('cart')||'[]');
+const cat=new URLSearchParams(location.search).get('cat')||'bedroom';
+const names={bedroom:"غرف نوم",sofa:"كنب وكراسي",dining:"غرف طعام",coffee:"طاولات القهوة والتلفزيون",offers:"عروض نهاية العام 70%",furniture:"اثاث",home:"منتجات منزلية",new:"جديد بيتونيا",appliances:"أجهزة منزلية",sets:"اطقم غرف",b2b:"خدمات الشركات",blog:"المدونة"};
+function openDrawer(){drawer.classList.add('open');overlay.classList.add('show')} function closeDrawer(){drawer.classList.remove('open');overlay.classList.remove('show')}
+function render(){
+ cartCount.innerText=cart.reduce((a,b)=>a+b.qty,0);
+ let sn=localStorage.getItem('site_name');if(sn)siteName.innerText=sn;
+ catTitle.innerText=names[cat]||cat;
+ document.title=(names[cat]||cat)+" - أبو محمد اليافعي";
+ let filtered=cat==='offers'||cat==='all'?products:products.filter(p=>p.cat===cat);
+ if(filtered.length===0) filtered=products;
+ count.innerText=filtered.length+" منتج";
+ document.getElementById('products').innerHTML=filtered.map(p=>`<div onclick="location.href='product.html?id=${p.id}'" class="bg-white p-2 pb-3 cursor-pointer"><div class="relative"><img src="${p.img}" class="w-full aspect-[4/3] object-cover rounded-lg"><span class="absolute top-2 left-2 bg-black text-white text-[10px] px-2 py-1 rounded">${p.badgeLeft}</span><span class="absolute top-2 right-2 bg-[#C8A97E] text-white text-[10px] px-2 py-1 rounded">${p.badgeRight}</span></div><p class="text-[12px] mt-2 h-8 overflow-hidden">${p.name}</p><div class="flex gap-2 mt-1"><b>${p.price.toLocaleString()} ر.س</b><span class="text-[11px] line-through text-gray-400">${p.oldPrice.toLocaleString()}</span></div><button class="w-full mt-2 border rounded-full h-9 text-[12px]">أضف للسلة</button></div>`).join('');
+}
+render();
+</script></body></html>
