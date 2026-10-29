@@ -1,72 +1,36 @@
-<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>أبو محمد اليافعي</title><script src="https://cdn.tailwindcss.com"></script><link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@700;800&display=swap" rel="stylesheet"><style>*{font-family:Tajawal} #drawer{transform:translateX(100%);transition:0.3s} #drawer.open{transform:translateX(0)} #overlay{display:none} #overlay.show{display:block}</style></head>
+<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>أبو محمد اليافعي</title><script src="https://cdn.tailwindcss.com"></script><link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@700;800&display=swap" rel="stylesheet"><style>*{font-family:Tajawal} #drawer{transform:translateX(100%);transition:.3s} #drawer.open{transform:translateX(0)} #overlay{display:none} #overlay.show{display:block}</style></head>
 <body class="bg-[#F9F6F1]">
-<!-- Overlay -->
 <div id="overlay" onclick="closeDrawer()" class="fixed inset-0 bg-black/50 z-[60]"></div>
-<!-- Drawer جانبي مثل بيتونيا -->
 <div id="drawer" class="fixed top-0 right-0 w-[85%] max-w-[360px] h-full bg-white z-[70] overflow-y-auto shadow-2xl">
-<div class="flex justify-between items-center p-4 border-b sticky top-0 bg-white z-10"><span class="font-black">القائمة</span><button onclick="closeDrawer()" class="w-8 h-8 border rounded-full">×</button></div>
-<div class="p-0 text-[14px]">
-<div class="px-4 py-3 bg-[#F9F6F1]"><input placeholder="ماذا تبحث عنه؟" class="w-full bg-white border rounded-full h-10 px-4 text-sm"></div>
-<a href="#" class="flex justify-between p-4 border-b"><span>جديد بيتونيا</span><span>‹</span></a>
-<a href="#" class="flex justify-between p-4 border-b"><span>اثاث</span><span>‹</span></a>
-<a href="#" class="flex justify-between p-4 border-b"><span>منتجات منزلية</span><span>‹</span></a>
-<a href="#" class="flex justify-between p-4 border-b bg-[#A91D2A] text-white"><span>أجهزة منزلية</span><span>‹</span></a>
-<a href="#" class="flex justify-between p-4 border-b"><span>عروض نهاية العام</span><span>‹</span></a>
-<a href="#" class="flex justify-between p-4 border-b"><span>طاولات القهوة والتلفزيون</span><span>‹</span></a>
-<a href="#" class="flex justify-between p-4 border-b"><span>كنب وكراسي</span><span>‹</span></a>
-<a href="#" class="flex justify-between p-4 border-b"><span>غرف نوم</span><span>‹</span></a>
-<a href="#" class="flex justify-between p-4 border-b"><span>غرف طعام</span><span>‹</span></a>
-<a href="#" class="flex justify-between p-4 border-b"><span>اطقم غرف</span><span>‹</span></a>
-<a href="#" class="flex justify-between p-4 border-b"><span>خدمات الشركات B2B</span><span>‹</span></a>
-<a href="#" class="flex justify-between p-4 border-b"><span>المدونة</span><span>‹</span></a>
+<div class="flex justify-between items-center p-4 border-b sticky top-0 bg-white z-10"><b>القائمة</b><button onclick="closeDrawer()" class="w-8 h-8 border rounded-full">×</button></div>
+<div class="text-[14px]">
+<div class="px-4 py-3"><input id="dSearch" placeholder="ماذا تبحث عنه؟" onkeydown="if(event.key==='Enter') location.href='search.html?q='+this.value" class="w-full border rounded-full h-10 px-4 text-sm"></div>
+<a href="index.html" class="flex justify-between p-4 border-b"><span>الرئيسية</span><span>‹</span></a>
+<a href="category.html?cat=new" class="flex justify-between p-4 border-b"><span>✨ جديد بيتونيا</span><span>‹</span></a>
+<a href="category.html?cat=furniture" class="flex justify-between p-4 border-b"><span>اثاث</span><span>‹</span></a>
+<a href="category.html?cat=home" class="flex justify-between p-4 border-b"><span>منتجات منزلية</span><span>‹</span></a>
+<a href="category.html?cat=appliances" class="flex justify-between p-4 border-b bg-[#A91D2A] text-white"><span>أجهزة منزلية</span><span>‹</span></a>
+<a href="category.html?cat=offers" class="flex justify-between p-4 border-b"><span>عروض نهاية العام</span><span>‹</span></a>
+<a href="category.html?cat=coffee" class="flex justify-between p-4 border-b"><span>طاولات القهوة والتلفزيون</span><span>‹</span></a>
+<a href="category.html?cat=sofa" class="flex justify-between p-4 border-b"><span>كنب وكراسي</span><span>‹</span></a>
+<a href="category.html?cat=bedroom" class="flex justify-between p-4 border-b font-bold bg-[#F9F6F1]"><span>غرف نوم</span><span>‹</span></a>
+<a href="category.html?cat=dining" class="flex justify-between p-4 border-b"><span>غرف طعام</span><span>‹</span></a>
+<a href="category.html?cat=sets" class="flex justify-between p-4 border-b"><span>اطقم غرف</span><span>‹</span></a>
+<a href="category.html?cat=b2b" class="flex justify-between p-4 border-b"><span>خدمات الشركات B2B</span><span>‹</span></a>
 <div class="bg-[#A91D2A] text-white text-center p-3 mt-2 text-[13px] font-bold">معارضنا - جدة - الخبر - المدينة</div>
-<div class="bg-[#111] text-white p-4 text-center text-[12px] mt-0">
-<p>المملكة العربية السعودية</p>
-<p class="mt-2 opacity-60">تسجيل الدخول</p>
-<p class="mt-4 text-[#C8A97E]">أبو محمد اليافعي - الدمام<br><span id="waShow">05xxxxxxxx</span></p>
-</div>
-</div>
-</div>
-
-<header class="bg-white sticky top-0 z-50 border-b">
-<div class="flex justify-between items-center px-4 h-[56px]">
-<div class="flex items-center gap-3">
-<button onclick="openDrawer()" class="text-[22px]">☰</button>
-<span id="siteName" class="font-black text-[19px]">أبو محمد اليافعي</span>
-</div>
-<div class="flex gap-3 items-center">
-<a href="cart.html" class="relative text-[22px]">🛒<span id="cartCount" class="absolute -top-2 -right-2 bg-[#C8A97E] text-white text-[10px] w-5 h-5 rounded-full flex items-center justify-center">0</span></a>
-</div>
-</div>
-<div class="px-4 pb-3"><input id="search" placeholder="ابحث..." class="w-full bg-[#F9F6F1] border rounded-full h-11 px-4 text-sm"></div>
-<div class="bg-[#A91D2A] text-white text-center py-3 text-[14px] font-bold">عروض نهاية العام 70% - خصومات كبرى</div>
-<div class="flex gap-2 px-2 py-2 overflow-x-auto text-[12px] whitespace-nowrap bg-white border-b">
-<span class="bg-[#F9F6F1] px-3 py-1 rounded-full">الكل</span><span class="px-3 py-1">جديد بيتونيا</span><span class="px-3 py-1">اثاث</span><span class="px-3 py-1">منتجات منزلية</span><span class="px-3 py-1">أجهزة منزلية</span>
-</div>
-</header>
-
-<div id="products" class="grid grid-cols-2 gap-[1px] bg-[#EDE8E0]"></div>
-
-<footer class="bg-[#111] text-white p-6 text-center pb-20"><p id="footerText" class="text-[13px] leading-7 whitespace-pre-line">أبو محمد اليافعي - الدمام</p><a href="admin/" class="text-[11px] text-[#C8A97E] underline mt-3 block">لوحة التحكم</a></footer>
-
-<div id="chatBtn" class="fixed bottom-5 left-5 bg-[#C8A97E] w-14 h-14 rounded-full flex items-center justify-center text-white text-xl shadow-lg cursor-pointer z-50">💬</div>
-<div id="chatBox" class="hidden fixed bottom-20 left-4 right-4 md:w-[360px] bg-[#F5F1EB] rounded-2xl border shadow-2xl z-50 overflow-hidden"><div class="bg-[#111] text-white p-4 flex justify-between"><b class="text-sm">خدمة العملاء</b><span onclick="chatBox.classList.add('hidden')" class="cursor-pointer">×</span></div><div id="chatMsgs" class="p-4 h-[300px] overflow-y-auto space-y-3 text-[13px]"></div><div class="p-3 bg-white flex gap-2"><input id="chatInput" placeholder="اكتب..." class="flex-1 border rounded-full px-4 h-10 text-sm"><button onclick="sendChat()" class="bg-black text-white w-10 h-10 rounded-full">↑</button></div></div>
-
+<div class="bg-[#111] text-white p-4 text-center text-[12px]"><p id="waShow2">05xxxxxxxx</p><p class="mt-1">أبو محمد اليافعي - الدمام</p><a href="admin/" class="underline text-[#C8A97E]">لوحة التحكم</a></div>
+</div></div>
+<header class="bg-white sticky top-0 z-50 border-b"><div class="flex justify-between items-center px-4 h-[56px]"><div class="flex items-center gap-3"><button onclick="openDrawer()" class="text-[26px]">☰</button><span id="siteName" class="font-black text-[19px]">أبو محمد اليافعي</span></div><a href="cart.html" class="relative text-[22px]">🛒<span id="cartCount" class="absolute -top-2 -right-2 bg-[#C8A97E] text-white text-[10px] w-5 h-5 rounded-full flex items-center justify-center">0</span></a></div><div class="px-4 pb-3 flex gap-2"><input id="search" placeholder="ماذا تبحث عنه؟" onkeydown="if(event.key==='Enter') location.href='search.html?q='+this.value" class="flex-1 bg-[#F9F6F1] border rounded-full h-11 px-4 text-sm"><button onclick="location.href='search.html?q='+search.value" class="bg-black text-white w-11 h-11 rounded-full">⌕</button></div><div class="bg-[#A91D2A] text-white text-center py-3 text-[14px] font-bold">عروض نهاية العام 70% - خصومات كبرى</div></header>
+<div class="bg-[#A91D2A] text-white p-6 text-center"><h1 class="text-[34px] font-black leading-8">عروض<br>نهاية العام<br><span class="text-[60px]">70%</span></h1></div>
+<div class="grid grid-cols-3 gap-[1px] bg-[#EDE8E0]"><a href="category.html?cat=bedroom" class="bg-white p-2 text-center"><img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=300" class="w-full aspect-square rounded object-cover"><p class="text-[11px] mt-1">غرف النوم</p></a><a href="category.html?cat=sofa" class="bg-white p-2 text-center"><img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=300" class="w-full aspect-square rounded object-cover"><p class="text-[11px] mt-1">غرف المعيشة</p></a><a href="category.html?cat=dining" class="bg-white p-2 text-center"><img src="https://images.unsplash.com/photo-1615873968403-89e068629265?w=300" class="w-full aspect-square rounded object-cover"><p class="text-[11px] mt-1">غرف السفرة</p></a></div>
+<div id="products" class="grid grid-cols-2 gap-[1px] bg-[#EDE8E0] mt-[1px]"></div>
+<footer class="bg-[#111] text-white p-6 text-center"><p id="footerText" class="text-[13px] whitespace-pre-line">أبو محمد اليافعي - الدمام</p></footer>
 <script>
-let defaultProducts=[{id:1,name:"سرير فلان مع مرآة 180x200",price:2699,oldPrice:4299,img:"https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=600",badgeLeft:"Premium",badgeRight:"-37%",rating:"5.0"},{id:2,name:"طقم غرفة نوم نوفا 6 قطع",price:3799,oldPrice:5890,img:"https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=600",badgeLeft:"توصيل سريع",badgeRight:"-35%",rating:"4.9"}];
-let products=JSON.parse(localStorage.getItem('baytonia_products')||'null')||defaultProducts;
+let defaults=[{id:1,name:"تشكيلة غرفة نوم روبينا 8 قطع",price:8483,oldPrice:13434,img:"https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=600",cat:"bedroom",badgeLeft:"Premium",badgeRight:"-37%"},{id:2,name:"طاولة قهوة خشب طبيعي دائرية",price:2699,oldPrice:4299,img:"https://images.unsplash.com/photo-1533090484-07cc94c8a6f2?w=600",cat:"coffee",badgeLeft:"Premium",badgeRight:"-43%"},{id:3,name:"كنب مودرن 3 مقاعد فاخر",price:1999,oldPrice:3500,img:"https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600",cat:"sofa",badgeLeft:"توصيل سريع",badgeRight:"-35%"},{id:4,name:"طقم سفرة 8 كراسي مودرن",price:10282,oldPrice:22652,img:"https://images.unsplash.com/photo-1615873968403-89e068629265?w=600",cat:"dining",badgeLeft:"Premium",badgeRight:"-57%"}];
+let products=JSON.parse(localStorage.getItem('baytonia_products')||'null')||defaults;
 let cart=JSON.parse(localStorage.getItem('cart')||'[]');
 function getWA(){return localStorage.getItem('wa_number')||'966500000000';}
-function openDrawer(){drawer.classList.add('open');overlay.classList.add('show');document.body.style.overflow='hidden'}
-function closeDrawer(){drawer.classList.remove('open');overlay.classList.remove('show');document.body.style.overflow=''}
-function render(){
- document.getElementById('cartCount').innerText=cart.reduce((a,b)=>a+b.qty,0);
- let sn=localStorage.getItem('site_name'); if(sn) siteName.innerText=sn;
- let ft=localStorage.getItem('footer_text'); if(ft) footerText.innerText=ft;
- waShow.innerText=getWA();
- document.getElementById('products').innerHTML=products.map(p=>`<div onclick="location.href='product.html?id=${p.id}'" class="bg-white p-2 pb-3 cursor-pointer"><div class="relative"><img src="${p.img}" class="w-full aspect-[4/3] object-cover rounded-lg"><span class="absolute top-2 left-2 bg-black text-white text-[10px] px-2 py-1 rounded">${p.badgeLeft}</span><span class="absolute top-2 right-2 bg-[#C8A97E] text-white text-[10px] px-2 py-1 rounded">${p.badgeRight}</span></div><p class="text-[12px] mt-2 h-8 overflow-hidden">${p.name}</p><div class="flex gap-2 mt-1"><b class="text-[13px]">${p.price.toLocaleString()} ر.س</b><span class="text-[11px] line-through text-gray-400">${p.oldPrice.toLocaleString()}</span></div><button class="w-full mt-2 border border-black rounded-full h-9 text-[12px] font-bold">أضف للسلة</button></div>`).join('');
-}
+function openDrawer(){drawer.classList.add('open');overlay.classList.add('show')} function closeDrawer(){drawer.classList.remove('open');overlay.classList.remove('show')}
+function render(){cartCount.innerText=cart.reduce((a,b)=>a+b.qty,0);let sn=localStorage.getItem('site_name');if(sn)siteName.innerText=sn;let ft=localStorage.getItem('footer_text');if(ft)footerText.innerText=ft;waShow2.innerText=getWA();document.getElementById('products').innerHTML=products.map(p=>`<div onclick="location.href='product.html?id=${p.id}'" class="bg-white p-2 pb-3 cursor-pointer"><div class="relative"><img src="${p.img}" class="w-full aspect-[4/3] object-cover rounded-lg"><span class="absolute top-2 left-2 bg-black text-white text-[10px] px-2 py-1 rounded">${p.badgeLeft}</span><span class="absolute top-2 right-2 bg-[#C8A97E] text-white text-[10px] px-2 py-1 rounded">${p.badgeRight}</span></div><p class="text-[12px] mt-2 h-8 overflow-hidden">${p.name}</p><div class="flex gap-2 mt-1"><b>${p.price.toLocaleString()} ر.س</b><span class="text-[11px] line-through text-gray-400">${p.oldPrice.toLocaleString()}</span></div><button class="w-full mt-2 border border-black rounded-full h-9 text-[12px] font-bold">أضف للسلة</button></div>`).join('');localStorage.setItem('baytonia_products',JSON.stringify(products));}
 render();
-chatBtn.onclick=()=>{chatBox.classList.toggle('hidden');if(chatMsgs.innerHTML===''){chatMsgs.innerHTML=`<div class="bg-white p-3 rounded-xl">حياك الله 🤍 مع أبو محمد اليافعي</div>`}};
-function sendChat(){const v=chatInput.value;if(!v)return;chatMsgs.innerHTML+=`<div class="bg-[#C8A97E] text-white p-2 rounded-xl ml-auto w-fit">${v}</div>`;chatInput.value='';setTimeout(()=>{const wa=getWA();chatMsgs.innerHTML+=`<div class="bg-white p-3 rounded-xl"><a href="https://wa.me/${wa}?text=${encodeURIComponent(v)}" target="_blank" class="bg-green-600 text-white px-4 py-2 rounded-full text-sm">ارسال واتساب</a></div>`;chatMsgs.scrollTop=9999},500)}
 </script></body></html>
